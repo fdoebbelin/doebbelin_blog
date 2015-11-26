@@ -22,7 +22,7 @@ task('application:down', function () {
 });
 
 task('application:up', function () {
-    run('cd  {{deploy_path}}/current && php artisan down');
+    run('cd  {{deploy_path}}/current && php artisan up');
 });
 
 task('deploy:composer', function () {
