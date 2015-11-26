@@ -13,7 +13,14 @@ server('prod', 'www183.your-server.de', 222)
 set('repository', 'git@github.com:fdoebbelin/doebbelin_blog.git');
 set('keep_releases', 3);
 
-set('shared_dirs', ['storage']);
+//set('shared_dirs', ['storage']);
+set('shared_dirs', [
+    'storage/app',
+    'storage/framework/cache',
+    'storage/framework/sessions',
+    'storage/framework/views',
+    'storage/logs',
+]);
 
 set('shared_files', ['.env']);
 
