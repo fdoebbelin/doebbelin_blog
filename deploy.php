@@ -11,14 +11,18 @@ server('prod', 'www183.your-server.de', 222)
     ->env('deploy_path', '/usr/www/users/tymdad/doebbelin.net');
 
 set('repository', 'git@github.com:fdoebbelin/doebbelin_blog.git');
-set('keep_releases', 1);
+set('keep_releases', 3);
 
 set('shared_dirs', ['storage']);
 
 set('shared_files', ['.env']);
 
-task('deploy:rm_releases', function () {
-    run('rm -rf {{deploy_path}}/releases');
+task('application:down', function () {
+    run('cd {{deploy_path}}/current' && 'php artisan down');
+});
+
+task('application:up', function () {
+    run('cd {{deploy_path}}/current' && 'php artisan up');
 });
 
 task('deploy:composer', function () {
@@ -36,15 +40,15 @@ task('deploy:rsync_vendors', function () {
 });
 
 task('deploy', [
-    //'deploy:rm_releases',
+    'application:down',
     'deploy:prepare',
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',
     'deploy:symlink',
     'deploy:composer',
-    //'deploy:rsync_vendors',
-    'cleanup'
+    'cleanup',
+    'application:up'
 ])->desc('Deploy your project');
 
 after('deploy', 'success');
