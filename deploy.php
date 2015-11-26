@@ -11,6 +11,7 @@ server('prod', 'www183.your-server.de', 222)
     ->env('deploy_path', '/usr/www/users/tymdad/doebbelin.net');
 
 set('repository', 'git@github.com:fdoebbelin/doebbelin_blog.git');
+set('keep_releases', 3);
 
 set('shared_dirs', ['storage']);
 
@@ -31,7 +32,7 @@ task('deploy:rsync_vendors', function () {
 });
 
 task('deploy', [
-    'deploy:rm_releases',
+    //'deploy:rm_releases',
     'deploy:prepare',
     'deploy:release',
     'deploy:update_code',
