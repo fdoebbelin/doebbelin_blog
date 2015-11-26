@@ -18,11 +18,11 @@ set('shared_dirs', ['storage']);
 set('shared_files', ['.env']);
 
 task('application:down', function () {
-    run('cd {{deploy_path}}/current' && 'php artisan down');
+    run('cd  {{deploy_path}}/current && php artisan down');
 });
 
 task('application:up', function () {
-    run('cd {{deploy_path}}/current' && 'php artisan up');
+    run('cd  {{deploy_path}}/current && php artisan down');
 });
 
 task('deploy:composer', function () {
