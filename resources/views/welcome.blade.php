@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -39,7 +40,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">doebbelin.net</div>
-                <p>Version 9</p>
+                <p>Version 10</p>
             </div>
         </div>
     </body>
