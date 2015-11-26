@@ -18,15 +18,15 @@ set('shared_dirs', ['storage']);
 set('shared_files', ['.env']);
 
 task('application:down', function () {
-    run('cd  {{deploy_path}}/current && php artisan down');
+    run('cd {{deploy_path}}/current && php artisan down');
 });
 
 task('application:up', function () {
-    run('cd  {{deploy_path}}/current && php artisan up');
+    run('cd {{deploy_path}}/current && php artisan up');
 });
 
 task('deploy:composer', function () {
-    run('cd /usr/www/users/tymdad/doebbelin.net/current && /usr/home/tymdad/bin/php /usr/home/tymdad/bin/composer install');
+    run('cd {{deploy_path}}/current && php composer.phar install');
 });
 
 task('deploy:rsync_vendors', function () {
@@ -40,15 +40,15 @@ task('deploy:rsync_vendors', function () {
 });
 
 task('deploy', [
-    'application:down',
-    'deploy:prepare',
-    'deploy:release',
-    'deploy:update_code',
-    'deploy:shared',
-    'deploy:symlink',
+    // 'application:down',
+    // 'deploy:prepare',
+    // 'deploy:release',
+    // 'deploy:update_code',
+    // 'deploy:shared',
+    // 'deploy:symlink',
     'deploy:composer',
-    'cleanup',
-    'application:up'
+    // 'cleanup',
+    // 'application:up'
 ])->desc('Deploy your project');
 
 after('deploy', 'success');
