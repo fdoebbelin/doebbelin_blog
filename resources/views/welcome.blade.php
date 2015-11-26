@@ -39,7 +39,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">doebbelin.net</div>
-                <p>Version 1</p>
+                <p>Version 2</p>
             </div>
         </div>
     </body>
