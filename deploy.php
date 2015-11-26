@@ -21,6 +21,10 @@ task('deploy:rm_releases', function () {
     run('rm -rf {{deploy_path}}/releases');
 });
 
+task('deploy:composer', function () {
+    run('composer install');
+});
+
 task('deploy:rsync_vendors', function () {
     $rsync_cmd =
         'rsync -avz --delete -e "ssh -p ' . env('server.port') . '" ' .
@@ -37,6 +41,7 @@ task('deploy', [
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',
+    'deploy:composer',
     'deploy:symlink',
     //'deploy:rsync_vendors',
     'cleanup'
