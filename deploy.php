@@ -38,7 +38,7 @@ task('deploy', [
     'deploy:update_code',
     'deploy:shared',
     'deploy:symlink',
-    'deploy:rsync_vendors',
+    //'deploy:rsync_vendors',
     'cleanup'
 ])->desc('Deploy your project');
 
