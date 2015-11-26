@@ -29,26 +29,16 @@ task('deploy:composer', function () {
     run('cd {{deploy_path}}/current && php composer.phar install');
 });
 
-task('deploy:rsync_vendors', function () {
-    $rsync_cmd =
-        'rsync -avz --delete -e "ssh -p ' . env('server.port') . '" ' .
-        getcwd() . '/vendor ' .
-        get('user') . '@' . env('server.host') . ':' .
-        env('deploy_path') . '/shared';
-    runLocally($rsync_cmd);
-    run('cp -r {{deploy_path}}/shared/vendor {{deploy_path}}/current');
-});
-
 task('deploy', [
-    // 'application:down',
-    // 'deploy:prepare',
-    // 'deploy:release',
-    // 'deploy:update_code',
-    // 'deploy:shared',
-    // 'deploy:symlink',
+    'application:down',
+    'deploy:prepare',
+    'deploy:release',
+    'deploy:update_code',
+    'deploy:shared',
+    'deploy:symlink',
     'deploy:composer',
-    // 'cleanup',
-    // 'application:up'
+    'cleanup',
+    'application:up'
 ])->desc('Deploy your project');
 
 after('deploy', 'success');
