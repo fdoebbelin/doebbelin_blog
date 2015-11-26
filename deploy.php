@@ -22,7 +22,7 @@ task('deploy:rm_releases', function () {
 });
 
 task('deploy:composer', function () {
-    run('composer install');
+    run('cd /usr/www/users/tymdad/doebbelin.net/current && /usr/home/tymdad/bin/php /usr/home/tymdad/bin/composer install');
 });
 
 task('deploy:rsync_vendors', function () {
@@ -41,8 +41,8 @@ task('deploy', [
     'deploy:release',
     'deploy:update_code',
     'deploy:shared',
-    'deploy:composer',
     'deploy:symlink',
+    'deploy:composer',
     //'deploy:rsync_vendors',
     'cleanup'
 ])->desc('Deploy your project');
