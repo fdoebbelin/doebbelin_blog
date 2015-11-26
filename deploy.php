@@ -1,6 +1,6 @@
 <?php
 
-require 'recipe/composer.php';
+require 'recipe/common.php';
 
 server('prod', 'www183.your-server.de', 222)
     ->user('tymdad')
